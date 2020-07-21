@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', )
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'is_superuser')
 
     def create(self, validated_data):
         if not self.context.get('request').user.is_superuser:
