@@ -1,0 +1,26 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Es administrador</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.is_superuser? 'Sí' : 'No'}}</td>
+      <td>
+        <a [routerLink]="['/user', user.id]"><i class="far fa-edit"></i></a>
+        <a (click)="deleteUser(user.id)"><i class="far fa-times-circle"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
