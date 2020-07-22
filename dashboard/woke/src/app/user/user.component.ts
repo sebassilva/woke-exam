@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class UserComponent implements OnInit {
 
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class UserComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.api.deleteUserDetail(id).subscribe( data => {
-          var removeIndex = this.users.map(item => item.id).indexOf(id);
+          const removeIndex = this.users.map(item => item.id).indexOf(id);
           this.users.splice(removeIndex, 1);
           Swal.fire(
             '¡Usuario Eliminado!',
@@ -45,11 +47,15 @@ export class UserComponent implements OnInit {
         }, error => {
           Swal.fire(
             '¡Hubo un problema!',
-            'No hemos podido eliminar al usuario',
+            error.error.detail,
             'error'
           );
         });
       }
     });
+  }
+
+  newUser(): void{
+    this.router.navigate(['/user-detail']);
   }
 }
