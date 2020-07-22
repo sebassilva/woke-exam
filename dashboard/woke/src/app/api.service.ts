@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE_URL: string = 'http://localhost:8000/api';
+  private BASE_URL = 'http://localhost:8000/api';
   private httpHeaders: HttpHeaders = new HttpHeaders()
   .set('Content-Type', 'application/json');
 
@@ -16,14 +16,11 @@ export class ApiService {
       responseType: 'json'
     };
 
-
     constructor(private http: HttpClient) {
     }
 
     getAuthHeaders(){
-      console.log(localStorage.getItem('user'))
       const accessToken = JSON.parse(localStorage.getItem('user')).access;
-      console.log("Acces token", accessToken);
       const httpHeaders = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Authorization', `Bearer ${accessToken}`);
@@ -34,19 +31,17 @@ export class ApiService {
       return options;
     }
 
-
     login(data): Observable<any> {
       const url = `${this.BASE_URL}/token/`;
       return this.http.post(url, data, this.options as any);
     }
-
 
     getUsers(): Observable<any> {
       const url = `${this.BASE_URL}/user/`;
       return this.http.get(url, this.getAuthHeaders() as any);
     }
 
-    getUserDetail(id): Observable<any> {
+    getUserDetail(id: number): Observable<any> {
       const url = `${this.BASE_URL}/user/${id}/`;
       return this.http.get(url, this.getAuthHeaders() as any);
     }

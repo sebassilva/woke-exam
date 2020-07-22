@@ -74,4 +74,13 @@ python manage.py createsuperuser
 
 Llena todos los datos que te pide y pon una contraseña segura. Solo los super usuarios tienen acceso a crear, editar y eliminar usuarios. Todos los demás usuarios solo pueden ver el resto de los usuarios.
 
+## Consideraciones adicionales
+
+Algunas cosas por mejorar serían: 
+- Cambiar las credenciales a variables de ambiente o utilizar algún servicio para proveerlas en el backend
+- Cambiar la base de datos a una más robusta (Postgresql o MySQL)
+- Mejorar el manejo de excepciones en backend y frontend
+- Cambiar los errores de django a español
+- Mejorar el diseño del sitio
+
 Tiempo estimado de desarrollo: 4 horas.
