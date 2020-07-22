@@ -1,27 +1,77 @@
 # Woke
+El proyecto se divide en dos grandes secciones. La primera es el proyecto de frontend construido en Angular 9. se encuentra en el directorio dashboard/woke.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+El Backend se hizo con dJango, utilizando Django 3.0 rest framework y utilizando Sqlite. Dicho proyecto se encuentra en la carpeta /api.
 
-## Development server
+Decidí manejar ambos proyectos en un mismo repositorio por simplicidad y para enviar sólo este repositorio.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Woke frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Servidor desarrollo
+Para correr el proyecto de angular primero se tiene que instalar las dependencias con 
+```shell
+cd dashboard/woke
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Para servir el proyecto, corremos el comando
+```shell
+ng serve
+```
+y podremos acceder a 
+`http://localhost:4200/`.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Getting started
+Primero, hay que asegurarnos de tener una versión de python > 3.6.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```shell
+python --version
+```
 
-## Further help
+Crea un entorno virtual 
+```shell
+py -m venv apienv
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+Activa tu entorno virtual. Si ves del lado izquierdo de tu terminal algo como (apienv) Tu nombre: lo hiciste correctamente.
+```shell
+./apienv\Scripts\activate.bat
+```
+
+o si utilizas linux 
+```shell
+source apienv/bin/activate
+```
+
+Instala las bibliotecas necesarias:
+```shell
+pip install -r requirements.txt
+```
+
+Si tien
+
+Es necesario que corras las migraciones, es decir, que crees toda la estructura necesaria en la base de datos.
+```shell
+python manage.py makemigrations
+```
+Ahora estás listo para correr el servidor en tu máquina local, utilizando. El siguiente comando crea una instancia de 
+django y la hace disponible en el puerto 8000 de tu computadora.
+
+```shell
+python manage.py runserver
+```
+
+
+Es necesario que tengas también un super usuario para realizar super actividades ;) 
+
+```shell
+python manage.py createsuperuser
+```
+
+Llena todos los datos que te pide y pon una contraseña segura. Solo los super usuarios tienen acceso a crear, editar y eliminar usuarios. Todos los demás usuarios solo pueden ver el resto de los usuarios.
+
+Tiempo estimado de desarrollo: 4 horas.
