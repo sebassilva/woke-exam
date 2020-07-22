@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getUsers().subscribe( data => {
+      console.log(data)
       this.users = data.results;
       this.count = data.count;
     });

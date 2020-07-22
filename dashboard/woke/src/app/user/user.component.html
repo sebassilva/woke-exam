@@ -33,8 +33,8 @@
           <td>{{user.email}}</td>
           <td>{{user.is_superuser? 'Sí' : 'No'}}</td>
           <td>
-            <a [routerLink]="['/user-detail', user.id]"><i class="far fa-edit"></i></a>
-            <a (click)="deleteUser(user.id)"><i class="far fa-times-circle"></i></a>
+            <a [routerLink]="['/user-detail', user.id]" class="padding-left-small"><i class="far fa-edit"></i></a>
+            <a (click)="deleteUser(user.id)" class="padding-left-small red"><i class="far fa-times-circle"></i></a>
           </td>
         </tr>
       </tbody>
