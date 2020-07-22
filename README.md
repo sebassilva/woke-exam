@@ -25,7 +25,7 @@ y podremos acceder a
 
 
 
-## Getting started
+##  Backend
 Primero, hay que asegurarnos de tener una versión de python > 3.6.
 
 ```shell
