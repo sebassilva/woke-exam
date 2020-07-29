@@ -15,9 +15,16 @@
                 <input
                 formControlName="first_name"
                 type="text" class="form-control"
+                required
                 aria-describedby="nameHelp"
                 placeholder="Nombre">
+
+            <div *ngIf="userForm.controls['first_name'].invalid && (userForm.controls['first_name'].dirty || userForm.controls['first_name'].touched)" class="alert alert-danger">
+              <div *ngIf="userForm.controls['first_name'].errors.required">
+                Este campo es necesario
               </div>
+            </div>
+                        </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Apellido(s)</label>
                 <input
@@ -26,13 +33,23 @@
                 aria-describedby="lastName"
                 placeholder="Apellido(s)">
               </div>
+              <div *ngIf="userForm.controls['last_name'].invalid && (userForm.controls['last_name'].dirty || userForm.controls['last_name'].touched)" class="alert alert-danger">
+              <div *ngIf="userForm.controls['last_name'].errors.required">
+                Este campo es necesario
+              </div>
+            </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Correo Electrónico</label>
+                <label for="exampleInputEmail1">Nombre de usuario</label>
                 <input
                 formControlName="username"
                 type="email" class="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Correo electrónico">
+              <div *ngIf="userForm.controls['username'].invalid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)" class="alert alert-danger">
+              <div *ngIf="userForm.controls['username'].errors">
+                Ingresa un nombre de usuario válido.
+              </div>
+            </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Contraseña</label>
@@ -41,6 +58,11 @@
                 type="password"
                 class="form-control"
                 placeholder="Contraseña">
+              <div *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)" class="alert alert-danger">
+              <div *ngIf="userForm.controls['password'].errors">
+                La longitud mínima es de 8 caracteres.
+              </div>
+            </div>
               </div>
               <button type="submit" class="btn btn-success">Crear usuario</button>
             </form>

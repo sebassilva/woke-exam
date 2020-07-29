@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -19,10 +19,10 @@ export class UserDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.userForm = this.formBuilder.group({
-      first_name: '',
-      last_name: '',
-      username: '',
-      password: ''
+      first_name: ['', Validators.required ],
+      last_name: ['', Validators.required ],
+      username: ['', Validators.required ],
+      password: ['', Validators.minLength(8) ],
     });
    }
 
@@ -38,6 +38,10 @@ export class UserDetailComponent implements OnInit {
 
 
   onSubmit(): void{
+    if ( !this.userForm.valid ){
+      console.log(this.userForm.errors)
+      return;
+    }
     this.api.postUserDetail(this.userForm.value).subscribe( data => {
       if ( data ){
         // If login is correct, navigate to users
